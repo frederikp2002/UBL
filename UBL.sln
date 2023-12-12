@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{2112BBF5-8804-4FED-BA86-43DB45A4CCD2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UBL.Teacher", "UBL.Teacher\UBL.Teacher.csproj", "{AEF5F7B3-057A-455E-B8BF-B14606A26AA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UBL.Teacher.Test", "UBL.Teacher.Test\UBL.Teacher.Test.csproj", "{4D83E2FE-A28A-44EB-AF4D-8649429466CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{2112BBF5-8804-4FED-BA86-43DB45A4CCD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2112BBF5-8804-4FED-BA86-43DB45A4CCD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2112BBF5-8804-4FED-BA86-43DB45A4CCD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEF5F7B3-057A-455E-B8BF-B14606A26AA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEF5F7B3-057A-455E-B8BF-B14606A26AA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEF5F7B3-057A-455E-B8BF-B14606A26AA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEF5F7B3-057A-455E-B8BF-B14606A26AA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D83E2FE-A28A-44EB-AF4D-8649429466CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D83E2FE-A28A-44EB-AF4D-8649429466CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D83E2FE-A28A-44EB-AF4D-8649429466CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D83E2FE-A28A-44EB-AF4D-8649429466CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
