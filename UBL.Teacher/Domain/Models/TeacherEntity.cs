@@ -1,4 +1,5 @@
-namespace UBL.Teacher.Models;
+using UBL.Teacher.Domain.DomainServices;
+namespace UBL.Teacher.Domain.Models;
 
 public class TeacherEntity
 {
@@ -13,11 +14,17 @@ public class TeacherEntity
     public DateTime HireDate { get; private set; }
     public DateTime TerminationDate { get; private set; }
 
-    public TeacherEntity(Guid id, string firstName, string lastName, string email, string position, string address, string city, int zipCode)
+    private readonly IDomainServiceTeacher _domainServiceTeacher;
+
+    public TeacherEntity(IDomainServiceTeacher domainServiceTeacher, Guid id, string firstName, string lastName, string email, string position, string address, string city, int zipCode)
     {
         if (!CheckIfValidEmail(email)) { throw new ArgumentException("Invalid email"); }
         if (!CheckIfValidPosition(position)) { throw new ArgumentException("Invalid position"); }
         if (!CheckIfValidZipCode(zipCode)) { throw new ArgumentException("Invalid zip code"); }
+
+        _domainServiceTeacher = domainServiceTeacher;
+
+        if (_domainServiceTeacher.TeacherInDatabase(id)) { throw new ArgumentException("This teacher is already registered in the system!"); }
         
         this.Id = id;
         this.FirstName = firstName;
@@ -29,12 +36,12 @@ public class TeacherEntity
         this.ZipCode = zipCode;
         
     }
-    
+
     /// <summary>
-    /// Checks if the passed string is a valid email.
+    /// Checks if the given email is valid.
     /// </summary>
-    /// <param name="email">String possibly representing an email.</param>
-    /// <returns>True if the string contains the '@' character. Otherwise, returns False.</returns>
+    /// <param name="email">The email to check.</param>
+    /// <returns>True if the email is valid, otherwise false.</returns>
     private bool CheckIfValidEmail(string email)
     {
         if (email.Contains('@'))
@@ -45,10 +52,10 @@ public class TeacherEntity
     }
 
     /// <summary>
-    /// Checks if the passed integer is a valid zip code.
+    /// Checks if the given zip code is valid.
     /// </summary>
-    /// <param name="zipCode">Integer possibly representing a zip code.</param>
-    /// <returns>True if the passed integer is within the range of 1000 to 9999. Otherwise, returns False.</returns>
+    /// <param name="zipCode">The zip code to be checked.</param>
+    /// <returns>True if the zip code is valid; otherwise, false.</returns>
     private bool CheckIfValidZipCode(int zipCode)
     {
         if (zipCode < 1000 || zipCode > 9999)
@@ -59,10 +66,12 @@ public class TeacherEntity
     }
 
     /// <summary>
-    /// Checks if the passed string is a valid position.
+    /// Checks if the given position is valid.
     /// </summary>
-    /// <param name="position">String possibly representing a position.</param>
-    /// <returns>True if the passed string matches either "Teacher", "Assistant", or "Administrator". Otherwise, returns False.</returns>
+    /// <param name="position">The position to be checked.</param>
+    /// <returns>
+    /// <c>true</c> if the position is valid; otherwise, <c>false</c>.
+    /// </returns>
     private bool CheckIfValidPosition(string position)
     {
         if (position == "Teacher" || position == "Assistant" || position == "Administrator")
