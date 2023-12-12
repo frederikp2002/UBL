@@ -3,7 +3,7 @@ namespace UBL.Teacher.Domain.Models;
 
 public class TeacherEntity
 {
-    public Guid Id { get; set; }
+    public int Id { get; set; }
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
     public string Email { get; private set; }
@@ -16,7 +16,7 @@ public class TeacherEntity
 
     private readonly IDomainServiceTeacher _domainServiceTeacher;
 
-    public TeacherEntity(IDomainServiceTeacher domainServiceTeacher, Guid id, string firstName, string lastName, string email, string position, string address, string city, int zipCode)
+    public TeacherEntity(IDomainServiceTeacher domainServiceTeacher, int id, string firstName, string lastName, string email, string position, string address, string city, int zipCode)
     {
         if (!CheckIfValidEmail(email)) { throw new ArgumentException("Invalid email"); }
         if (!CheckIfValidPosition(position)) { throw new ArgumentException("Invalid position"); }
@@ -42,6 +42,7 @@ public class TeacherEntity
     /// </summary>
     /// <param name="email">The email to check.</param>
     /// <returns>True if the email is valid, otherwise false.</returns>
+    // TODO: Check for more than just a "@" character
     private bool CheckIfValidEmail(string email)
     {
         if (email.Contains('@'))
