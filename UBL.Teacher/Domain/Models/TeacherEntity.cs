@@ -1,9 +1,10 @@
 using UBL.Teacher.Domain.DomainServices;
+
 namespace UBL.Teacher.Domain.Models;
 
 public class TeacherEntity
 {
-    public int Id { get; set; }
+        public int Id { get; set; }
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
     public string Email { get; private set; }
@@ -81,5 +82,4 @@ public class TeacherEntity
         }
         return false;
     }
-    
 }
