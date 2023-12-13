@@ -1,4 +1,4 @@
-namespace UBL.Teacher.Domain.DomainServices;
+namespace UBL.Teacher.Architecture.Domain.DomainServices;
 
 public interface IDomainServiceTeacher
 {

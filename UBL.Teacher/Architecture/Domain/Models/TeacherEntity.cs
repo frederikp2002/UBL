@@ -1,6 +1,6 @@
-using UBL.Teacher.Domain.DomainServices;
+using UBL.Teacher.Architecture.Domain.DomainServices;
 
-namespace UBL.Teacher.Domain.Models;
+namespace UBL.Teacher.Architecture.Domain.Models;
 
 public class TeacherEntity
 {
