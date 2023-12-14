@@ -1,17 +1,19 @@
+using System.ComponentModel.DataAnnotations;
 using UBL.Teacher.Architecture.Domain.DomainServices;
 
 namespace UBL.Teacher.Architecture.Domain.Models;
 
 public class TeacherEntity
 {
-        public int Id { get; set; }
+    [Key]
+    public int Id { get; set; }
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
     public string Email { get; private set; }
-    public string Position { get; private set; }
-    public string Address { get; private set; }
-    public string City { get; private set; }
-    public int ZipCode { get; private set; }
+    public string? Position { get; private set; }
+    public string? Address { get; private set; }
+    public string? City { get; private set; }
+    public int? ZipCode { get; private set; }
     public DateTime HireDate { get; private set; }
     public DateTime TerminationDate { get; private set; }
 
@@ -37,7 +39,8 @@ public class TeacherEntity
         this.ZipCode = zipCode;
         
     }
-
+    internal TeacherEntity(){}
+    
     /// <summary>
     /// Checks if the given email is valid.
     /// </summary>
