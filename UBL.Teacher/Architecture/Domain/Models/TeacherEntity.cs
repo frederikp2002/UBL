@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using UBL.Teacher.Architecture.Domain.DomainServices;
 
 namespace UBL.Teacher.Architecture.Domain.Models;
@@ -6,7 +7,8 @@ namespace UBL.Teacher.Architecture.Domain.Models;
 public class TeacherEntity
 {
     [Key]
-    public int Id { get; set; }
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int Id { get; private set; }
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
     public string Email { get; private set; }

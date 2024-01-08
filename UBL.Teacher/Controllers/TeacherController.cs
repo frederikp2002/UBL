@@ -4,7 +4,7 @@ using UBL.Teacher.Architecture.Application.Dtos;
 
 namespace UBL.Teacher.Controllers;
 
-public class TeacherController : Controller
+public class TeacherController : Controller 
 {
 
     private readonly ICreateCommand<CreateRequestDtoTeacher> _createCommandTeacher;
@@ -26,8 +26,7 @@ public class TeacherController : Controller
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            return BadRequest(e.Message);
         }
     }
 }
