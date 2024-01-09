@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using UBL.Teacher.Architecture.Application.Commands;
 using UBL.Teacher.Architecture.Application.Commands.Implementations;
 using UBL.Teacher.Architecture.Application.Dtos;
+using UBL.Teacher.Architecture.Application.Queries;
+using UBL.Teacher.Architecture.Application.Queries.Implementations;
 using UBL.Teacher.Architecture.Application.Repositories;
 using UBL.Teacher.Architecture.Domain.DomainServices;
 using UBL.Teacher.Architecture.Infrastructure.DomainServices.Implementations;
@@ -19,6 +21,7 @@ builder.Services.AddSwaggerGen();
 
 // Teacher
 builder.Services.AddScoped<ICreateCommand<CreateRequestDtoTeacher>, CreateCommandTeacher>();
+builder.Services.AddScoped<IGetQuery<QueryResultDtoTeacher>, GetQueryTeacher>();
 builder.Services.AddScoped<IRepositoryTeacher, RepositoryTeacher>();
 builder.Services.AddScoped<IDomainServiceTeacher, DomainServiceTeacher>();
 
