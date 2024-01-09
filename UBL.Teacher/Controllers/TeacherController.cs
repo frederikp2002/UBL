@@ -2,17 +2,20 @@ using Microsoft.AspNetCore.Mvc;
 using UBL.Teacher.Architecture.Application.Commands;
 using UBL.Teacher.Architecture.Application.Dtos;
 using UBL.Teacher.Architecture.Application.Queries;
+using UBL.Teacher.Architecture.Domain.Models;
 
 namespace UBL.Teacher.Controllers;
 
 public class TeacherController : Controller 
 {
 
-    private readonly ICreateCommand<CreateRequestDtoTeacher> _createCommandTeacher;
+    private readonly ICreateCommand<CreateRequestDtoTeacher> _createCommand;
+    private readonly IDeleteCommand<TeacherEntity> _deleteCommand;
     private readonly IGetQuery<QueryResultDtoTeacher> _getQueryTeacher;
-    public TeacherController(ICreateCommand<CreateRequestDtoTeacher> createCommandTeacher, IGetQuery<QueryResultDtoTeacher> getQueryTeacher)
+    public TeacherController(ICreateCommand<CreateRequestDtoTeacher> createCommand, IDeleteCommand<TeacherEntity> deleteCommand, IGetQuery<QueryResultDtoTeacher> getQueryTeacher)
     {
-        _createCommandTeacher = createCommandTeacher;
+        _createCommand = createCommand;
+        _deleteCommand = deleteCommand;
         _getQueryTeacher = getQueryTeacher;
     }
     
@@ -23,7 +26,23 @@ public class TeacherController : Controller
     {
         try
         {
-            _createCommandTeacher.Create(createRequestDtoTeacher);
+            _createCommand.Create(createRequestDtoTeacher);
+            return Ok();
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+    [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public ActionResult Delete(int id)
+    {
+        try
+        {
+            _deleteCommand.Delete(id);
             return Ok();
         }
         catch (Exception e)

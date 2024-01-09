@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UBL.Teacher.Data;
 
@@ -10,9 +11,11 @@ using UBL.Teacher.Data;
 namespace UBL.Teacher.Data.Migrations
 {
     [DbContext(typeof(TeacherContext))]
-    partial class TeacherContextModelSnapshot : ModelSnapshot
+    [Migration("20240109115235_UpdateEntities")]
+    partial class UpdateEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

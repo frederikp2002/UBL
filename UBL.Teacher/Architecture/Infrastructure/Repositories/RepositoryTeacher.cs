@@ -21,15 +21,24 @@ public class RepositoryTeacher : IRepositoryTeacher
         _db.Update(entity);
         _db.SaveChanges();
     }
+
+    void IRepositoryTeacher.Delete(int id)
+    {
+        var dbEntity = _db.Teachers.AsNoTracking().FirstOrDefault(x => x.TeacherId == id);
+        if (dbEntity == null) throw new Exception("Teacher does not exist in database!");
+        _db.Teachers.Attach(dbEntity);
+        _db.Teachers.Remove(dbEntity);
+        _db.SaveChanges();
+    }
     
     QueryResultDtoTeacher IRepositoryTeacher.Get(int id)
     {
-        var dbEntity = _db.Teachers.AsNoTracking().FirstOrDefault(x => x.Id == id);
+        var dbEntity = _db.Teachers.AsNoTracking().FirstOrDefault(x => x.TeacherId == id);
         if (dbEntity == null) throw new Exception("Teacher does not exist in database!");
 
         return new QueryResultDtoTeacher()
         {
-            Id = dbEntity.Id,
+            Id = dbEntity.TeacherId,
             FirstName = dbEntity.FirstName,
             LastName = dbEntity.LastName,
             Email = dbEntity.Email,

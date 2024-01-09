@@ -6,5 +6,6 @@ namespace UBL.Teacher.Architecture.Application.Repositories;
 public interface IRepositoryTeacher
 {
     void Create(TeacherEntity teacherEntity);
+    void Delete(int id);
     QueryResultDtoTeacher Get(int id);
 }

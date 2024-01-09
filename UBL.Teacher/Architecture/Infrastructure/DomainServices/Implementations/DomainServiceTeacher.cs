@@ -15,7 +15,7 @@ public class DomainServiceTeacher : IDomainServiceTeacher
 
     public bool TeacherInDatabase(int id)
     {
-        if (_db.Teachers.Any(x => x.Id == id))
+        if (_db.Teachers.Any(x => x.TeacherId == id))
         {
             return true;
         }

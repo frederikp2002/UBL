@@ -8,7 +8,7 @@ public class TeacherEntity
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; private set; }
+    public int TeacherId { get; private set; }
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
     public string Email { get; private set; }
@@ -31,7 +31,7 @@ public class TeacherEntity
 
         if (_domainServiceTeacher.TeacherInDatabase(id)) { throw new ArgumentException("This teacher is already registered in the system!"); }
         
-        this.Id = id;
+        this.TeacherId = id;
         this.FirstName = firstName;
         this.LastName = lastName;
         this.Email = email;

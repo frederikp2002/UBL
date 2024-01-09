@@ -6,6 +6,7 @@ using UBL.Teacher.Architecture.Application.Queries;
 using UBL.Teacher.Architecture.Application.Queries.Implementations;
 using UBL.Teacher.Architecture.Application.Repositories;
 using UBL.Teacher.Architecture.Domain.DomainServices;
+using UBL.Teacher.Architecture.Domain.Models;
 using UBL.Teacher.Architecture.Infrastructure.DomainServices.Implementations;
 using UBL.Teacher.Architecture.Infrastructure.Repositories;
 using UBL.Teacher.Data;
@@ -21,6 +22,7 @@ builder.Services.AddSwaggerGen();
 
 // Teacher
 builder.Services.AddScoped<ICreateCommand<CreateRequestDtoTeacher>, CreateCommandTeacher>();
+builder.Services.AddScoped<IDeleteCommand<TeacherEntity>, DeleteCommandTeacher>();
 builder.Services.AddScoped<IGetQuery<QueryResultDtoTeacher>, GetQueryTeacher>();
 builder.Services.AddScoped<IRepositoryTeacher, RepositoryTeacher>();
 builder.Services.AddScoped<IDomainServiceTeacher, DomainServiceTeacher>();
