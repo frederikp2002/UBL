@@ -36,7 +36,7 @@ public class TeacherController : Controller
     }
 
     [HttpDelete("{id}")]
-    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public ActionResult Delete(int id)
     {
