@@ -53,12 +53,10 @@ public class RepositoryTeacher : IRepositoryTeacher
     TeacherEntity IRepositoryTeacher.Load(int id)
     {
         var dbEntity = _db.Teachers.AsNoTracking().FirstOrDefault(x => x.TeacherId == id);
-        if (dbEntity == null)
-        { throw new Exception("Teacher does not exist in database!!!"); }
+        if (dbEntity == null) throw new Exception("Teacher does not exist in database!!!");
 
-        {
-            return dbEntity;
-        }
+        return dbEntity;
+        
     }
     
 }

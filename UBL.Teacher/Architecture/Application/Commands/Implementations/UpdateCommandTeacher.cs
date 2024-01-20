@@ -6,7 +6,6 @@ namespace UBL.Teacher.Architecture.Application.Commands.Implementations;
 public class UpdateCommandTeacher : IUpdateCommand<UpdateRequestDtoTeacher>
 {
     private readonly IRepositoryTeacher _repository;
-
     public UpdateCommandTeacher(IRepositoryTeacher repository)
     {
         _repository = repository;
