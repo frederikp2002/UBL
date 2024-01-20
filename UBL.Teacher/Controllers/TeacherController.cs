@@ -12,11 +12,17 @@ public class TeacherController : Controller
     private readonly ICreateCommand<CreateRequestDtoTeacher> _createCommand;
     private readonly IDeleteCommand<TeacherEntity> _deleteCommand;
     private readonly IGetQuery<QueryResultDtoTeacher> _getQueryTeacher;
-    public TeacherController(ICreateCommand<CreateRequestDtoTeacher> createCommand, IDeleteCommand<TeacherEntity> deleteCommand, IGetQuery<QueryResultDtoTeacher> getQueryTeacher)
+    private readonly IUpdateCommand<UpdateRequestDtoTeacher> _updateCommand;
+
+    public TeacherController(ICreateCommand<CreateRequestDtoTeacher> createCommand, 
+                            IDeleteCommand<TeacherEntity> deleteCommand,
+                            IGetQuery<QueryResultDtoTeacher> getQueryTeacher,
+                            IUpdateCommand<UpdateRequestDtoTeacher> updateCommand)
     {
         _createCommand = createCommand;
         _deleteCommand = deleteCommand;
         _getQueryTeacher = getQueryTeacher;
+        _updateCommand = updateCommand;
     }
     
     /// <summary>
@@ -92,19 +98,20 @@ public class TeacherController : Controller
     }
 
     [HttpPut("{id}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status202Accepted)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public ActionResult Put(int id, [FromBody] UpdateRequestDtoTeacher updateRequestDtoTeacher)
+    public ActionResult Update(UpdateRequestDtoTeacher requestDto)
     {
         try
         {
-            _updateCommand.Update(id, updateRequestDtoTeacher);
-            return Ok();
+            _updateCommand.Update(requestDto);
+            return Accepted();
         }
         catch (Exception e)
         {
             return BadRequest(e.Message);
         }
     }
-
+    
+    
 }

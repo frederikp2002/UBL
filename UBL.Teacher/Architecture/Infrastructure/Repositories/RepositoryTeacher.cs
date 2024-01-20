@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics.Internal;
 using UBL.Teacher.Architecture.Application.Dtos;
 using UBL.Teacher.Architecture.Application.Repositories;
 using UBL.Teacher.Architecture.Domain.Models;
@@ -30,6 +29,12 @@ public class RepositoryTeacher : IRepositoryTeacher
         _db.Teachers.Remove(dbEntity);
         _db.SaveChanges();
     }
+
+    void IRepositoryTeacher.Update(TeacherEntity entity)
+    {
+        _db.Update(entity);
+        _db.SaveChanges();
+    }
     
     QueryResultDtoTeacher IRepositoryTeacher.Get(int id)
     {
@@ -38,13 +43,22 @@ public class RepositoryTeacher : IRepositoryTeacher
 
         return new QueryResultDtoTeacher()
         {
-            Id = dbEntity.TeacherId,
             FirstName = dbEntity.FirstName,
             LastName = dbEntity.LastName,
             Email = dbEntity.Email,
             Position = dbEntity.Position
         };
+    }
 
+    TeacherEntity IRepositoryTeacher.Load(int id)
+    {
+        var dbEntity = _db.Teachers.AsNoTracking().FirstOrDefault(x => x.TeacherId == id);
+        if (dbEntity == null)
+        { throw new Exception("Teacher does not exist in database!!!"); }
+
+        {
+            return dbEntity;
+        }
     }
     
 }

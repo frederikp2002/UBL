@@ -24,6 +24,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ICreateCommand<CreateRequestDtoTeacher>, CreateCommandTeacher>();
 builder.Services.AddScoped<IDeleteCommand<TeacherEntity>, DeleteCommandTeacher>();
 builder.Services.AddScoped<IGetQuery<QueryResultDtoTeacher>, GetQueryTeacher>();
+builder.Services.AddScoped<IUpdateCommand<UpdateRequestDtoTeacher>, UpdateCommandTeacher>();
 builder.Services.AddScoped<IRepositoryTeacher, RepositoryTeacher>();
 builder.Services.AddScoped<IDomainServiceTeacher, DomainServiceTeacher>();
 

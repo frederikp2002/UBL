@@ -42,6 +42,21 @@ public class TeacherEntity
         
     }
     internal TeacherEntity(){}
+
+    public void Update(string firstname, string lastname, string email, string position, string address, string city, int zipcode)
+    {
+        if (!CheckIfValidEmail(email)) throw new Exception("Dette er ikke en gyldig email!");
+        if (!CheckIfValidZipCode(zipcode)) throw new Exception("Dette er ikke et gyldig postnummer!");
+        if (!CheckIfValidPosition(position)) throw new Exception("Dette er ikke et gyldig postnummer!");
+
+        FirstName = firstname;
+        LastName = lastname;
+        Email = email;
+        Position = position;
+        Address = address;
+        City = city;
+        ZipCode = zipcode;
+    }
     
     /// <summary>
     /// Checks if the given email is valid.

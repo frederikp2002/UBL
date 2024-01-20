@@ -7,5 +7,7 @@ public interface IRepositoryTeacher
 {
     void Create(TeacherEntity teacherEntity);
     void Delete(int id);
+    void Update(TeacherEntity teacherEntity);
     QueryResultDtoTeacher Get(int id);
+    TeacherEntity Load(int id);
 }
