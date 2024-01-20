@@ -14,6 +14,10 @@ public class DeleteCommandTeacher : IDeleteCommand<TeacherEntity>
         _repository = repository;
     }
 
+    /// <summary>
+    /// This method deletes a teacher entity from the repository.
+    /// </summary>
+    /// <param name="id">The unique identifier of the teacher to be deleted.</param>
     void IDeleteCommand<TeacherEntity>.Delete(int id)
     {
         _repository.Delete(id);

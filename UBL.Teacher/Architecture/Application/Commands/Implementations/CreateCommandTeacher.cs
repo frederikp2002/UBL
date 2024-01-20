@@ -15,6 +15,10 @@ public class CreateCommandTeacher : ICreateCommand<CreateRequestDtoTeacher>
         _domainService = domainService;
     }
 
+    /// <summary>
+    /// This method creates a new teacher entity and saves it to the repository.
+    /// </summary>
+    /// <param name="createRequestDtoTeacher">A data transfer object containing the details of the teacher to be created.</param>
     void ICreateCommand<CreateRequestDtoTeacher>.Create(CreateRequestDtoTeacher createRequestDtoTeacher)
     {
         var entity = new TeacherEntity(_domainService, createRequestDtoTeacher.Id, createRequestDtoTeacher.FirstName,
