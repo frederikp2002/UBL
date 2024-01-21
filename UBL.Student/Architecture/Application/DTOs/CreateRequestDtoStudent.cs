@@ -5,9 +5,9 @@ namespace Student.Architecture.Application.DTOs;
 /// </summary>
 public class CreateRequestDtoStudent
 {
-    public int StudentId { get; set; }
-    public string FirstName { get; private set; } = null!;
-    public string LastName { get; private set; } = null!;
+    public int StudentId { get; private set; }
+    public string FirstName { get; set; } = null!;
+    public string LastName { get; set; } = null!;
     public string? Email { get; set; }
     public string? Address { get; set; }
     public int ZipCode { get; set; }
