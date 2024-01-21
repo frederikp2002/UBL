@@ -20,6 +20,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ICreateCommandStudent<CreateRequestDtoStudent>, CreateCommandStudent>();
 builder.Services.AddScoped<IDeleteCommandStudent<StudentEntity>, DeleteCommandStudent>();
 builder.Services.AddScoped<IGetQueryStudent<QueryResultDtoStudent>, GetQueryStudent>();
+builder.Services.AddScoped<IGetAllQueryStudent<QueryResultDtoStudent>, GetAllQueryStudent>();
 builder.Services.AddScoped<IRepositoryStudent, RepositoryStudent>();
 
 builder.Services.AddDbContext<StudentContext>();

@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Student.Architecture.Application.DTOs;
 using Student.Architecture.Application.Repositories;
 using Student.Architecture.Domain.Models;
@@ -64,7 +65,25 @@ public class RepositoryStudent : IRepositoryStudent
             FinishedDate = dbEntity.FinishedDate,
             Age = dbEntity.Age
         };
+    }
 
+    IEnumerable<QueryResultDtoStudent> IRepositoryStudent.GetAll()
+    {
+        foreach (var dbEntity in _db.Students.AsNoTracking().ToList())
+        {
+            yield return new QueryResultDtoStudent()
+            {
+                StudentId = dbEntity.StudentId,
+                FirstName = dbEntity.FirstName,
+                LastName = dbEntity.LastName,
+                Email = dbEntity.Email,
+                Address = dbEntity.Address,
+                ZipCode = dbEntity.ZipCode,
+                AdmissionDate = dbEntity.AdmissionDate,
+                FinishedDate = dbEntity.FinishedDate,
+                Age = dbEntity.Age
+            };
+        }
     }
     
 }

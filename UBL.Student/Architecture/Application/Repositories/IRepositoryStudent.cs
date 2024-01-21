@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using Student.Architecture.Application.DTOs;
 using Student.Architecture.Domain.Models;
 
@@ -25,5 +26,7 @@ public interface IRepositoryStudent
     /// </summary>
     /// <param name="studentEntity">The student ID to get.</param>
     QueryResultDtoStudent Get(int id);
+
+    IEnumerable<QueryResultDtoStudent> GetAll();
 
 }

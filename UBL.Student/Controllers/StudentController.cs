@@ -12,12 +12,14 @@ public class StudentController : Controller
     private readonly ICreateCommandStudent<CreateRequestDtoStudent> _createCommand;
     private readonly IDeleteCommandStudent<StudentEntity> _deleteCommand;
     private readonly IGetQueryStudent<QueryResultDtoStudent> _getQuery;
+    private readonly IGetAllQueryStudent<QueryResultDtoStudent> _getAllQuery;
 
-    public StudentController(ICreateCommandStudent<CreateRequestDtoStudent> createCommand, IDeleteCommandStudent<StudentEntity> deleteCommand, IGetQueryStudent<QueryResultDtoStudent> getQuery)
+    public StudentController(ICreateCommandStudent<CreateRequestDtoStudent> createCommand, IDeleteCommandStudent<StudentEntity> deleteCommand, IGetQueryStudent<QueryResultDtoStudent> getQuery, IGetAllQueryStudent<QueryResultDtoStudent> getAllQuery)
     {
         _createCommand = createCommand;
         _deleteCommand = deleteCommand;
         _getQuery = getQuery;
+        _getAllQuery = getAllQuery;
     }
 
     /// <summary>
@@ -62,9 +64,14 @@ public class StudentController : Controller
         }
     }
 
+    /// <summary>
+    /// Gets a student by ID.
+    /// </summary>
+    /// <param name="id">The student ID that is needed to get a specific student.</param>
+    /// <returns>A response with the information of the student or an error message.</returns>
     [HttpGet("api/Get")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public ActionResult<QueryResultDtoStudent> Get(int id)
     {
         try
@@ -74,9 +81,28 @@ public class StudentController : Controller
         }
         catch (Exception e)
         {
-            return BadRequest(e.Message);
+            return NotFound(e.Message);
         }
     }
     
+    /// <summary>
+    /// Gets all students.
+    /// </summary>
+    /// <returns>A response with the information of all students or an error message.</returns>
+    [HttpGet("api/GetAll")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public ActionResult<IEnumerable<QueryResultDtoStudent>> GetAll()
+    {
+        try
+        {
+            var result = _getAllQuery.GetAll().ToList();
+            return Ok(result);
+        }
+        catch (Exception e)
+        {
+            return NotFound(e.Message);
+        }
+    }
 
 }
