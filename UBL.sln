@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UBL.Teacher", "UBL.Teacher\UBL.Teacher.csproj", "{7C3DD5C4-3604-494E-8B7A-3C1F650D41B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Student", "Student\Student.csproj", "{AE4ADECF-6A2A-456B-B496-B47251686E45}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UBL.Student", "UBL.Student\UBL.Student.csproj", "{AE4ADECF-6A2A-456B-B496-B47251686E45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

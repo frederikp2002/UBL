@@ -26,7 +26,8 @@ public class StudentEntity
     /// <param name="email">The email of the student.</param>
     /// <param name="address">The address of the student.</param>
     /// <param name="zipCode">The zip code of the student's address.</param>
-    public StudentEntity(int studentId, string firstName, string lastName, string email, string address, int zipCode)
+    public StudentEntity(
+        int studentId, string firstName, string lastName, string email, string address, int zipCode, DateTime admissionDate, DateTime finishedDate, DateTime age)
     {
 
         if (!CheckIfValidEmail(email)) throw new Exception("Ugyldig email!");
@@ -38,7 +39,12 @@ public class StudentEntity
         this.Email = email;
         this.Address = address;
         this.ZipCode = zipCode;
+        this.AdmissionDate = admissionDate;
+        this.FinishedDate = finishedDate;
+        this.Age = age;
     }
+
+    internal StudentEntity() { }
 
     /// <summary>
     /// Checks if the provided email is valid.
