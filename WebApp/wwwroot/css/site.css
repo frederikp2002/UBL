@@ -15,13 +15,11 @@ html {
 .frontpage-button {
   margin: 0 1rem 0 1rem;
   border-radius: 1rem !important;
-  /* Add a default color, can be overridden inline */
   background-color: #007bff;
 }
 
-/* unvisited link */
-a:link, a:visited, a:hover, a:active {
-  color: white !important;
+.frontpage-button a {
+  color: #ffffff; 
   text-decoration: none;
 }
 
