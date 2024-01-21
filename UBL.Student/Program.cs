@@ -1,7 +1,10 @@
 using Student.Architecture.Application.Commands;
 using Student.Architecture.Application.Commands.Implementation;
 using Student.Architecture.Application.DTOs;
+using Student.Architecture.Application.Queries;
+using Student.Architecture.Application.Queries.Implementations;
 using Student.Architecture.Application.Repositories;
+using Student.Architecture.Domain.Models;
 using Student.Architecture.Infrastructure.Repositories;
 using Student.Data;
 
@@ -15,6 +18,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ICreateCommandStudent<CreateRequestDtoStudent>, CreateCommandStudent>();
+builder.Services.AddScoped<IDeleteCommandStudent<StudentEntity>, DeleteCommandStudent>();
+builder.Services.AddScoped<IGetQueryStudent<QueryResultDtoStudent>, GetQueryStudent>();
 builder.Services.AddScoped<IRepositoryStudent, RepositoryStudent>();
 
 builder.Services.AddDbContext<StudentContext>();
