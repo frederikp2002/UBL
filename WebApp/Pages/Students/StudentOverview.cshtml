@@ -1,0 +1,58 @@
+@page
+@model WebApp.Pages.Students.StudentOverview
+
+<h1>Students Overview</h1>
+<p>The overview over all registered students</p>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>UBL - Students</title>
+</head>
+<body>
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Admission Date</th>
+        <th>Finished Date</th>
+        <th>Age</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>2</th>
+        <td>Frederik Ehrenreich Petersen</td>
+        <td>frederikp2002@gmail.com</td>
+        <td>Sønderbrogade 81B, 1., 8700</td>
+        <td>2024-01-21 19:56:39.818000</td>
+        <td>2024-01-21 19:56:39.818000</td>
+        <td>2024-01-21 19:56:39.818000</td>
+        <td>
+            <button type="button" class="btn btn-warning button-edit">Edit</button>
+            <button type="button" class="btn btn-danger button-delete">Delete</button>
+        </td>
+    </tr>
+    <tr>
+        <th>3</th>
+        <td>Jolie Marie Verkade</td>
+        <td>jolieverkade@gmail.com</td>
+        <td>Friendshipring 106, 1251</td>
+        <td>2024-01-21 20:21:29.922000</td>
+        <td>2024-01-21 20:21:29.922000</td>
+        <td>2024-01-21 20:21:29.922000</td>
+        <td>
+            <button type="button" class="btn btn-warning button-edit">Edit</button>
+            <button type="button" class="btn btn-danger button-delete">Delete</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+    <button type="button" class="btn btn-info button-getspecificstudent ">Get Specific Student by ID</button>
+</body>
+</html>

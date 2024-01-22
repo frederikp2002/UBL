@@ -18,7 +18,27 @@ html {
   background-color: #007bff;
 }
 
-.frontpage-button a {
+.button-delete {
+  margin: 0 1rem 0 1rem;
+  border-radius: 1rem !important;
+  background-color: #DC3444;
+}
+
+.button-edit {
+  margin: 0 1rem 0 1rem;
+  border-radius: 1rem !important;
+  background-color: #FFCA2B;
+  color: white;
+}
+
+.button-getspecificstudent {
+  margin: 0 1rem 0 1rem;
+  border-radius: 1rem !important;
+  background-color: #2FD2F2;
+  color: white;
+}
+
+.frontpage-button a, .button-delete a, .button-edit a {
   color: #ffffff; 
   text-decoration: none;
 }
